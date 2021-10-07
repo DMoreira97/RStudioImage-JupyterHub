@@ -9,9 +9,11 @@ RUN cd /tmp/ && \
 
 
 # install rstudio-server
-# echo '\ndeb http://security.ubuntu.com/ubuntu xenial-security main' >> sudo nano /etc/apt/sources.list && \
+
 USER root
-RUN apt-get update && \
+RUN echo '\ndeb http://security.ubuntu.com/ubuntu xenial-security main' >> sudo nano /etc/apt/sources.list && \
+    apt-get update && \
+    sudo apt install libssl1.0.0 && \
     curl --silent -L --fail https://download2.rstudio.org/rstudio-server-1.1.463-amd64.deb > /tmp/rstudio.deb && \
     echo 'e8f3d9c3c5ca1df9827c6843b7ac5ab4 /tmp/rstudio.deb' | md5sum -c - && \
     apt-get install -y /tmp/rstudio.deb && \
