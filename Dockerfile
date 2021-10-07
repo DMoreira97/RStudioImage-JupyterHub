@@ -11,7 +11,7 @@ RUN cd /tmp/ && \
 # install rstudio-server
 
 USER root
-RUN sudo echo '\ndeb http://security.ubuntu.com/ubuntu xenial-security main' >> sudo nano /etc/apt/sources.list && \
+RUN sudo echo '\ndeb http://security.ubuntu.com/ubuntu xenial-security main' >> /etc/apt/sources.list && \
     cat /etc/apt/sources.list && \
     apt-get update && \
     sudo apt install libssl1.0.0 && \
